@@ -21,6 +21,12 @@ pipeline {
                       sh  'docker push localhost:5000/${NAME}:${VERSION}'
                      }
           }
+       stage ('cleanup1') {
+              agent any
+              steps {
+              sh 'docker rmi /${NAME}:${VERSION}'
+              }
+   }
         stage ('Pull') {
               agent any
               steps {
@@ -39,7 +45,7 @@ pipeline {
               sh 'echo $GIT_BRANCH'
               }
    }     
-    stage ('cleanup') {
+    stage ('cleanup2') {
               agent any
               steps {
               sh 'docker rmi /${NAME}:${VERSION}'
