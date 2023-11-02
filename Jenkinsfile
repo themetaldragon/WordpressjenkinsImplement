@@ -34,14 +34,5 @@ pipeline {
               sh 'docker rmi /mywordpressimage:1'
               }
    }
- stage ('checkout') {
-      
-  scmInfo = checkout scm
-
-        /*...*/
-        echo "scm : ${scmInfo}"
-        echo "${scmInfo.GIT_COMMIT}"
- 
-}
       }
 }
