@@ -28,6 +28,12 @@ pipeline {
               sh 'docker-compose up -d'
               }
    }
+    stage ('Branch') {
+              agent any
+              steps {
+              sh 'echo $GIT_BRANCH'
+              }
+   }     
     stage ('cleanup') {
               agent any
               steps {
