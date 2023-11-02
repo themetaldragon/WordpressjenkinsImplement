@@ -24,7 +24,7 @@ pipeline {
        stage ('cleanup1') {
               agent any
               steps {
-              sh 'docker rmi /${NAME}:${VERSION}'
+              sh 'docker rmi localhost:5000/${NAME}:${VERSION}'
               }
    }
         stage ('Pull') {
@@ -48,7 +48,7 @@ pipeline {
     stage ('cleanup2') {
               agent any
               steps {
-              sh 'docker rmi /${NAME}:${VERSION}'
+              sh 'docker rmi localhost:5000/${NAME}:${VERSION}'
               }
    }
       }
