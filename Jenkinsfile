@@ -19,7 +19,6 @@ pipeline {
         stage ('Pull') {
               agent any
               steps {
-              sh 'cd mydockerimages'
               sh 'docker pull localhost:5000/mywordpressimage:1'
               }
    }
