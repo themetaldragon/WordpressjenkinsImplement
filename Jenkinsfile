@@ -35,6 +35,7 @@ pipeline {
               }
    }
  stage ('checkout') {
+       agent any
        steps {
   scmInfo = checkout scm
 
@@ -43,4 +44,5 @@ pipeline {
         echo "${scmInfo.GIT_COMMIT}"
  } 
 }
+      }
 }
