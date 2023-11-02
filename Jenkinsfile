@@ -13,7 +13,7 @@ pipeline {
                 
                 steps {
                       sh 'docker tag mywordpressimage:1 localhost:5000/mywordpressimage:1'
-                      sh  'docker push localhost:5000/myimage1'
+                      sh  'docker push localhost:5000/mywordpressimage:1'
                      }
           }
         stage ('Pull') {
