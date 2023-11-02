@@ -1,7 +1,7 @@
 pipeline {
       agent any
       environment { 
-   NAME = "myapp"
+   NAME = "wordpressimage"
    VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
    IMAGE = "${NAME}:${VERSION}"
 }  
