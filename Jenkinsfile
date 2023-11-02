@@ -1,25 +1,30 @@
 pipeline {
       agent any
+      environment { 
+   NAME = "myapp"
+   VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+   IMAGE = "${NAME}:${VERSION}"
+}  
       stages {
                 
           stage ('Build') {
                agent any  
                steps {
-                      sh 'docker build -f Dockerfile -t mywordpressimage:${buildnumber} .'
+                      sh 'docker build -f Dockerfile -t ${NAME}:${VERSION} .'
                         }
               }
           stage ('Push') {
                 agent any
                 
                 steps {
-                      sh 'docker tag mywordpressimage:${buildnumber} localhost:5000/mywordpressimage:${buildnumber}'
-                      sh  'docker push localhost:5000/mywordpressimage:${buildnumber}'
+                      sh 'docker tag ${NAME}:${VERSION} localhost:5000/${NAME}:${VERSION}'
+                      sh  'docker push localhost:5000/${NAME}:${VERSION}'
                      }
           }
         stage ('Pull') {
               agent any
               steps {
-              sh 'docker pull localhost:5000/mywordpressimage:${buildnumber}'
+              sh 'docker pull localhost:5000/${NAME}:${VERSION}'
               }
    }
      stage ('Deploy') {
@@ -37,7 +42,7 @@ pipeline {
     stage ('cleanup') {
               agent any
               steps {
-              sh 'docker rmi /mywordpressimage:${buildnumber}'
+              sh 'docker rmi /${NAME}:${VERSION}'
               }
    }
       }
