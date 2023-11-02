@@ -8,7 +8,7 @@ pipeline {
       stages {
                 
           stage ('Build') {
-               agent jenkins-slave  
+               agent 'jenkins-slave'  
                steps {
                       sh 'docker build -f Dockerfile -t ${NAME}:${VERSION} .'
                         }
