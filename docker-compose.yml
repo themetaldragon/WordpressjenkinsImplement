@@ -4,7 +4,7 @@ version: '3.1'
 services:
 
   wordpress:
-    image: mywordpressimage:1
+    image: ${NAME}:${VERSION}
     restart: always
     ports:
       - 8080:80
