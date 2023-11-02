@@ -1,8 +1,8 @@
 pipeline {
       agent any
       environment { 
-   NAME = "wordpressimage"
-   VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+   NAME = "abc"
+   VERSION = "${env.BUILD_ID}"
    IMAGE = "${NAME}:${VERSION}"
 }  
       stages {
