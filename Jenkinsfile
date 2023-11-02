@@ -1,15 +1,15 @@
 pipeline {
-      agent any
+      agent n1
       stages {
                 
           stage ('Build') {
-               agent any  
+               agent n1  
                steps {
                       sh 'docker build -f Dockerfile -t mywordpressimage:1 .'
                         }
               }
           stage ('Push') {
-                agent any
+                agent n1
                 
                 steps {
                       sh 'docker tag mywordpressimage:1 localhost:5000/mywordpressimage:1'
@@ -17,19 +17,19 @@ pipeline {
                      }
           }
         stage ('Pull') {
-              agent any
+              agent n1
               steps {
               sh 'docker pull localhost:5000/mywordpressimage:1'
               }
    }
      stage ('Deploy') {
-              agent any
+              agent n1
               steps {
               sh 'docker-compose up -d'
               }
    }
     stage ('cleanup') {
-              agent any
+              agent n1
               steps {
               sh 'docker rmi /mywordpressimage:1'
               }
